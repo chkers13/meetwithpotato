@@ -4,7 +4,7 @@ from potato.models import Post,Comment
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout
 from django.views.generic import ListView,UpdateView,DetailView
-from potato.forms import PostForm
+from potato.forms import PostForm,EventForm
 
 # Create your views here.
 def index(request):
@@ -90,17 +90,17 @@ def registration(request):
 
 def post_create(request):
     context={}
-    form = PostForm()
+    form = EventForm()
     context['form'] = form
     response = render(request,'potato/post-create.html',context)
     if request.POST:
         form = PostForm(request.POST)
         if form.is_valid():
            
-            post = form.save(commit='false')
+            event = form.save(commit='false')
             author = User.objects.get(username = request.user)
-            post.author = author
-            post.save()
+            event.author = author
+            event.save()
             response = HttpResponseRedirect('/')
       
     return response

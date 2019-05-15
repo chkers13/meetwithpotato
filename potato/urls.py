@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^$', home_view, name='home_view'),
     url(r'^post/(?P<pk>\d+)$', get_post, name='post-detail'),
     url(r'^like_json$',views.like_json),
-    url(r'^postcreate$', post_create, name='post-create'),
+   	url(r'^postcreate$', post_create, name='post-create'),
     #url(r'^post/(?P<pk>\d+)$', PostDetailView.get_comment(), name='post_detail'),
     url(r'^(?P<author>\w+)$', post_user, name='userpost'),
     
