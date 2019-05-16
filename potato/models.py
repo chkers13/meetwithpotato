@@ -56,3 +56,11 @@ class Event(models.Model):
     def get_update_url(self):
         return ['event-update',(self.pk,)]
 
+
+
+class Profile(models.Model):             #профиль пользователя
+    user = models.OneToOneField(User)    #пользователь
+    info = models.TextField()            #информация о пользователя
+    age = models.IntegerField()          #возраст пользователя
+    rating = models.FloatField()         #рейтинг пользователя
+    count = models.IntegerField()        #количество оценивших пользователя
