@@ -60,7 +60,7 @@ class Event(models.Model):
 
 class Profile(models.Model):             #профиль пользователя
     user = models.OneToOneField(User)    #пользователь
-    info = models.TextField()            #информация о пользователя
-    age = models.IntegerField()          #возраст пользователя
-    rating = models.FloatField()         #рейтинг пользователя
-    count = models.IntegerField()        #количество оценивших пользователя
+    info = models.TextField(blank=True,null=True)            #информация о пользователя
+    age = models.IntegerField(blank=True,null=True)          #возраст пользователя
+    rating = models.FloatField(blank=True,null=True)         #рейтинг пользователя
+    count = models.IntegerField(blank=True,null=True)        #количество оценивших пользователя
