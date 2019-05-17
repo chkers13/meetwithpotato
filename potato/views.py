@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
-from potato.models import Post,Comment
+from potato.models import Post,Comment,Profile
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout
 from django.views.generic import ListView,UpdateView,DetailView
@@ -30,10 +30,11 @@ class PostDetailView(DetailView):
 def post_user(request,author='g'):
     author = User.objects.get(username=author)
     post_list = Post.objects.filter(author=author.id)    
-    
+    profile=Profile.objects.get(user=author.id)
 
-    context = {'author':author,'post_list':post_list}
+    context = {'author':author,'post_list':post_list,'profile':profile}
     response = render(request,'potato/userpost.html',context=context)
+
     return response
 
     
@@ -82,9 +83,18 @@ def registration(request):
         password = request.POST['password']
         email = request.POST['email']
         first_name = request.POST['first_name']
+        age = request.POST['age']
+        info = request.POST['info']
+
         user = User.objects.create_user(username = username,email = email,password=  password)
         user.first_name = first_name
         user.save()
+
+        profile= Profile()
+        profile.user=user
+        profile.age = age
+        profile.info = info
+        profile.save()
         response = HttpResponseRedirect('/')
     return response
 
