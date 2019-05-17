@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
-from potato.models import Post,Comment,Profile
+from potato.models import Post,Comment,Profile,Event
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout
 from django.views.generic import ListView,UpdateView,DetailView
@@ -11,7 +11,7 @@ def index(request):
     return HttpResponse("Hello, world. You're at the potato index.")
 
 def home_view(request):
-    post_list = Post.objects.all()
+    post_list = Event.objects.all()
     user = request.user
 
     context = {'post_list':post_list,'user':user}
@@ -39,7 +39,7 @@ def post_user(request,author='g'):
 
     
 def get_post(request,pk='1'):
-        post = Post.objects.get(pk=pk)       
+        post = Event.objects.get(pk=pk)     
         if request.POST:
             print(request.POST)
             if 'comment' in request.POST:
@@ -49,7 +49,7 @@ def get_post(request,pk='1'):
                 comment=Comment.objects.create(author=author,text=text,post=post)
                 comment.save()
         list_comment=Comment.objects.filter(post=pk)
-        context={'list_comment':list_comment,'post':post}
+        context={'list_comment':list_comment,'post':post,'kol':post.participant.count()}
         response = render(request,'potato/post-detail.html',context)
         return response
     
@@ -104,7 +104,8 @@ def post_create(request):
     context['form'] = form
     response = render(request,'potato/post-create.html',context)
     if request.POST:
-        form = PostForm(request.POST)
+        print('create')
+        form = EventForm(request.POST)
         if form.is_valid():
            
             event = form.save(commit='false')
@@ -120,13 +121,12 @@ def like_json(request):
     ls = []
     if request.POST:
         
-        post = Post.objects.get(pk=request.POST['id'])       
+        event = Event.objects.get(pk=request.POST['id'])       
         author = User.objects.get(username = request.user)
-        if author in post.likedone.all():
+        if author in event.participant.all():
             print("dislike")
-            post.thumbnumber=post.likedone.count()-1
-            post.save()
-            post.likedone.remove(author)
+            event.save()
+            event.participant.remove(author)
 
         else:
         #like1 = Like.objects.create(thumbnumber=post.likedone.thumbnumber+1)
@@ -134,10 +134,10 @@ def like_json(request):
         #like1.likedone.add(author)
         #post.likedone = like1
             print("like")
-            post.thumbnumber=post.likedone.count()+1
-            post.save()
-            post.likedone.add(author)
-        ls.append({'thumbnumber':post.thumbnumber})
+        
+            event.save()
+            event.participant.add(author)
+        ls.append({'thumbnumber':event.participant.count()})
         return JsonResponse(ls,safe=False)
    
       

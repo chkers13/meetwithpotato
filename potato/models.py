@@ -35,9 +35,9 @@ class Event(models.Model):
         ('P', 'Party'),
     )
     age_limit_choice = (
-       ('+12',12),
-       ('+16',16),
-       ('+18',18)
+       (12,12),
+       (16,16),
+       (18,18)
     )
 
     title = models.CharField(max_length=30,verbose_name="Заголовок")
@@ -46,9 +46,12 @@ class Event(models.Model):
     data_create = models.DateTimeField(auto_now_add='true')
     author = models.ForeignKey(User,blank=True,null=True,verbose_name="Организатор")
     participant = models.ManyToManyField(User,related_name='participantofevent')    
-    data_when = models.DateField()
+    data_when = models.DateField(blank=True,null=True)
     place = models.CharField(max_length=255,verbose_name="Место встречи")
-    age_limit = models.CharField(max_length=30,choices = age_limit_choice, verbose_name="Возврастное ограничение")
+    age_limit = models.IntegerField(choices = age_limit_choice, verbose_name="Возврастное ограничение")
+    maxparticipant = models.IntegerField(blank=True,null=True)
+    minparticipant = models.IntegerField(blank=True,null=True)
+    
     @models.permalink
     def get_absolute_url(self):
         return ['event-detail',(self.pk,)]

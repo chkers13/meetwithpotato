@@ -13,8 +13,7 @@ class PostForm(forms.ModelForm):
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields ={'title','description','category','age_limit','place','data_when'}
+        fields ={'title','description','category','age_limit','place','data_when','minparticipant','maxparticipant'}
         
-    my_field = DateField(widget=AdminDateWidget)
 
 

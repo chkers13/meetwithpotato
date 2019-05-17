@@ -5,11 +5,11 @@ from django.contrib.auth.models import User
 from .models import Profile
 # Register your models here.
 
-from .models import Post,Comment
+from .models import Post,Comment,Event
 
 admin.site.register(Post)
 admin.site.register(Comment)
-
+admin.site.register(Event)
 
 # Define an inline admin descriptor for Employee model
 # which acts a bit like a singleton
