@@ -33,6 +33,7 @@ class Event(models.Model):
         ('S', 'Sport'),
         ('H', 'Hobby'),
         ('P', 'Party'),
+        ('O', 'Other')
     )
     age_limit_choice = (
        (12,12),
@@ -43,14 +44,14 @@ class Event(models.Model):
     title = models.CharField(max_length=30,verbose_name="Заголовок")
     description = models.CharField(max_length=255,verbose_name="Описание")
     category = models.CharField(max_length=30,choices = category_choice, verbose_name="Категория")
-    data_create = models.DateTimeField(auto_now_add='true')
+    data_create = models.DateTimeField(auto_now_add='true', verbose_name="Дата создания")
     author = models.ForeignKey(User,blank=True,null=True,verbose_name="Организатор")
     participant = models.ManyToManyField(User,related_name='participantofevent')    
-    data_when = models.DateField(blank=True,null=True)
+    data_when = models.DateField(blank=True,null=True, verbose_name="Дата проведения")
     place = models.CharField(max_length=255,verbose_name="Место встречи")
-    age_limit = models.IntegerField(choices = age_limit_choice, verbose_name="Возврастное ограничение")
-    maxparticipant = models.IntegerField(blank=True,null=True)
-    minparticipant = models.IntegerField(blank=True,null=True)
+    age_limit = models.IntegerField(choices = age_limit_choice, verbose_name="Возрастное ограничение")
+    maxparticipant = models.IntegerField(blank=True,null=True, verbose_name="Максимальное число участников")
+    minparticipant = models.IntegerField(blank=True,null=True, verbose_name="Минимальное число участников")
     
     @models.permalink
     def get_absolute_url(self):

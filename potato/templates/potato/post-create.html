@@ -1,10 +1,10 @@
 {%extends 'base.html'%}
 {%block content%}
-<link href="admin/css/widgets.css" type="text/css" media="all" rel="stylesheet" />
+<link href="admin/css/widgets.css" type="text/css" media="all" rel="stylesheet"/>
 <script type="text/javascript" src="/admin/jsi18n/"></script>
 <form method="post">
 {% csrf_token %}
 {{form.as_p}}
-<button class="btn btn-lg btn-primary btn-block"  type="submit">Craete</button>
+<button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
 </form>
 {%endblock%}
