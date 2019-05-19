@@ -2,6 +2,8 @@
 {%block content%}
 <link href="admin/css/widgets.css" type="text/css" media="all" rel="stylesheet"/>
 <script type="text/javascript" src="/admin/jsi18n/"></script>
+
+
 <form method="post">
 {% csrf_token %}
 {{form.as_p}}

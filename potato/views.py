@@ -30,14 +30,14 @@ class PostDetailView(DetailView):
 def post_user(request,author='g'):
     author = User.objects.get(username=author)
     post_list = Post.objects.filter(author=author.id)    
-    profile=Profile.objects.get(user=author.id)
+    profile = Profile.objects.get(user=author.id)
 
     context = {'author':author,'post_list':post_list,'profile':profile}
     response = render(request,'potato/userpost.html',context=context)
 
     return response
 
-    
+
 def get_post(request,pk='1'):
         post = Event.objects.get(pk=pk)     
         if request.POST:
@@ -46,10 +46,10 @@ def get_post(request,pk='1'):
                 print("комментарий")
                 text = request.POST['comment']
                 author = User.objects.get(username = request.user)
-                comment=Comment.objects.create(author=author,text=text,post=post)
+                comment = Comment.objects.create(author=author,text=text,post=post)
                 comment.save()
-        list_comment=Comment.objects.filter(post=pk)
-        context={'list_comment':list_comment,'post':post,'kol':post.participant.count()}
+        list_comment = Comment.objects.filter(post=pk)
+        context = {'list_comment':list_comment,'post':post,'kol':post.participant.count()}
         response = render(request,'potato/post-detail.html',context)
         return response
     

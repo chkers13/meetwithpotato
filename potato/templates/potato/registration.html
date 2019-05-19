@@ -1,9 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!--Вставила стили из главной страницы-->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
+<script src="https://code.jquery.com/jquery-3.4.0.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
+
+  <link rel="stylesheet" href="/static/css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/animate.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/transition-animations.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/owl.carousel.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/magnific-popup.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/main.css" type="text/css">
+
+    
+    <script src="/static/js/modernizr.custom.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+<!--Вставила стили из главной страницы-->
 <style>
 .form-group{
  margin-bottom: 15px;
@@ -43,28 +61,33 @@ padding: 8px 12px !important;
 }
 .main-form{
  margin-top: 30px;
- margin: 0 auto;
+ margin-left: auto;
+ margin-right: auto;
  max-width: 400px;
- padding: 10px 40px;
-background:#FFA500;
-color: #FFF;
-text-shadow: none;
-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+ padding: 10px 90px;
+ background:#F5F5F5;
+ color: #000000;
+ text-shadow: none;
+ box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
 }
 span.input-group-addon i {
- color: #009edf;
+ color: #ff9800;
  font-size: 17px;
 }
 .login-button{
  margin-top: 5px;
 }
 </style>
+<!--в main-form background:#FFA500;
+span.input-group-addon i {
+ color: #009edf;-->
 <div class="container">
  <div class="row main-form">
  <form class="" method="post" >
  {% csrf_token %}
  <div class="form-group">
- <label for="first_name" class="cols-sm-2 control-label">Your Name</label>
+ <label for="first_name" class="cols-sm-2 control-label"></label>
+ <!--<label for="first_name" class="cols-sm-2 control-label">Your Name</label>-->
  <div class="cols-sm-10">
  <div class="input-group">
  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -74,7 +97,8 @@ span.input-group-addon i {
  </div>
 
  <div class="form-group">
- <label for="email" class="cols-sm-2 control-label">Your Email</label>
+ <label for="email" class="cols-sm-2 control-label"></label>
+ <!--<label for="email" class="cols-sm-2 control-label">Your Email</label>-->
  <div class="cols-sm-10">
  <div class="input-group">
  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
@@ -84,7 +108,8 @@ span.input-group-addon i {
  </div>
 
  <div class="form-group">
- <label for="username" class="cols-sm-2 control-label">Username</label>
+ <label for="username" class="cols-sm-2 control-label"></label>
+ <!--<label for="username" class="cols-sm-2 control-label">Username</label>-->
  <div class="cols-sm-10">
  <div class="input-group">
  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
@@ -94,7 +119,8 @@ span.input-group-addon i {
  </div>
 
  <div class="form-group">
- <label for="password" class="cols-sm-2 control-label">Password</label>
+ <label for="password" class="cols-sm-2 control-label"></label>
+ <!--<label for="password" class="cols-sm-2 control-label">Password</label>-->
  <div class="cols-sm-10">
  <div class="input-group">
  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -104,7 +130,8 @@ span.input-group-addon i {
  </div>
 
  <div class="form-group">
- <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+ <label for="confirm" class="cols-sm-2 control-label"></label>
+ <!--<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>-->
  <div class="cols-sm-10">
  <div class="input-group">
  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -114,7 +141,8 @@ span.input-group-addon i {
  </div>
 
  <div class="form-group">
- <label for="age" class="cols-sm-2 control-label">Age</label>
+ <label for="age" class="cols-sm-2 control-label"></label>
+ <!--<label for="age" class="cols-sm-2 control-label">Age</label>-->
  <div class="cols-sm-10">
  <div class="input-group">
  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
@@ -124,7 +152,8 @@ span.input-group-addon i {
  </div>
 
   <div class="form-group">
- <label for="info" class="cols-sm-2 control-label">Info</label>
+ <label for="info" class="cols-sm-2 control-label"></label>
+ <!--<label for="info" class="cols-sm-2 control-label">Info</label>-->
  <div class="cols-sm-10">
  <div class="input-group">
  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
