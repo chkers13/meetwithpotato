@@ -27,7 +27,7 @@
                 <a class="pt-trigger" href="#home" data-animation="62">Home</a><!-- href value = data-id without # of .pt-page. -->
               </li>             
               <li>
-                <a class="pt-trigger" href="#blog" data-animation="62">Blog</a>
+                <a class="pt-trigger" href="#blog" data-animation="62">Events</a>
               </li>
              
             </ul>
@@ -126,28 +126,28 @@
             <section class="pt-page" data-id="blog">
               <div class="section-inner custom-page-content">
                 <div class="page-header color-1">
-                  <h2>Blog</h2>
+                  <h2>Events</h2>
                 </div>
                 <div class="page-content">
 
                   <!-- Blog Posts Grid -->
                   <div class="blog-masonry two-columns">
                     <!-- Blog Post 1 -->
-					{% for post in post_list %}
+					{% for event in event_list %}
                     <div class="item">
                       <div class="blog-card">
                         <div class="media-block">
                           <a href="/potato/post/{{post.id}}">
                             <img class="post-image img-responsive" src="../media/images/blog/blog_post_1.jpg" alt="" />
                             <div class="mask"></div>
-                            <div class="post-date"><span class="day">{{post.data_create.day}}</span><span class="month">{{post.data_create.month}}</span><span class="year">{{post.data_create.year}}</span></div>
+                            <div class="post-date"><span class="day">{{event.data_create.day}}</span><span class="month">{{event.data_create.month}}</span><span class="year">{{event.data_create.year}}</span></div>
                           </a>
                         </div>
                         <div class="post-info">
                           <ul class="category">
-                            <a href="/potato/post/{{post.id}}" ><h4 class="blog-item-title">{{post.title}}</h4></a>
+                            <a href="/potato/post/{{post.id}}" ><h4 class="blog-item-title">{{event.title}}</h4></a>
                           </ul>
-                          <li style="max-width: 500px; overflow: hidden; text-overflow: ellipsis;white-space: nowrap" >{{post.text}}</li>
+                          <li style="max-width: 500px; overflow: hidden; text-overflow: ellipsis;white-space: nowrap" >{{event.text}}</li>
                         </div>
                       </div>
                     </div>
