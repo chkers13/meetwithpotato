@@ -25,14 +25,30 @@ class PostDetailView(DetailView):
        list_comment=Comment.objects.filter(post=3)
        context={'list_comment':list_comment}
        return context
-  
-    
+
+class UserUpdateView(UpdateView):
+    model = Profile
+    fields = '__all__'
+    template_name='potato/user-update.html'
+
+    def get_context_data(self,*args,**kwargs):
+        context=super(UserUpdateView,self).get_context_data(*args,**kwargs)
+        user = self.request.GET['profile']
+        print(user.info)
+        context['User']= User.objects.get(username=user)
+        return context
+
+
+
+
 def post_user(request,author='g'):
     author = User.objects.get(username=author)
-    post_list = Post.objects.filter(author=author.id)    
+    post_list = Event.objects.filter(author=author.id)    # получаем все ивенты которые создал челик
     profile = Profile.objects.get(user=author.id)
+    event_list = Event.objects.filter(participant=author.id) # получаем все ивенты на которые идет челик
 
-    context = {'author':author,'post_list':post_list,'profile':profile}
+
+    context = {'author':author,'post_list':post_list,'profile':profile,'event_list':event_list}
     response = render(request,'potato/userpost.html',context=context)
 
     return response
@@ -127,6 +143,8 @@ def like_json(request):
             print("dislike")
             event.save()
             event.participant.remove(author)
+            event.thumbnumber = event.participant.count()
+            event.save()
 
         else:
         #like1 = Like.objects.create(thumbnumber=post.likedone.thumbnumber+1)
@@ -137,6 +155,9 @@ def like_json(request):
         
             event.save()
             event.participant.add(author)
+            event.thumbnumber = event.participant.count()
+            event.save()
+
         ls.append({'thumbnumber':event.participant.count()})
         return JsonResponse(ls,safe=False)
    

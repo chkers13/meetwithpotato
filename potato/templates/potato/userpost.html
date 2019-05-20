@@ -24,10 +24,17 @@
             <!-- Main menu -->
             <ul id="nav" class="site-main-menu">
               <li>
-                <a class="pt-trigger" href="#home" data-animation="62">Home</a><!-- href value = data-id without # of .pt-page. -->
+                <a class="pt-trigger" href="#home" data-animation="62">O пользователе {{user.request}}</a><!-- href value = data-id without # of .pt-page. -->
               </li>             
               <li>
+<<<<<<< HEAD
                 <a class="pt-trigger" href="#blog" data-animation="62">Events</a>
+=======
+                <a class="pt-trigger" href="#org" data-animation="62">Организатор</a>
+              </li>
+               <li>
+                <a class="pt-trigger" href="#part" data-animation="62">Участник</a>
+>>>>>>> origin/master
               </li>
              
             </ul>
@@ -123,44 +130,102 @@
             <!-- /Portfolio Subpage -->
 
             <!-- Blog Subpage -->
-            <section class="pt-page" data-id="blog">
+            <section class="pt-page" data-id="org">
               <div class="section-inner custom-page-content">
                 <div class="page-header color-1">
+<<<<<<< HEAD
                   <h2>Events</h2>
+=======
+                  <h2>Организатор</h2>
+>>>>>>> origin/master
                 </div>
                 <div class="page-content">
 
                   <!-- Blog Posts Grid -->
                   <div class="blog-masonry two-columns">
+
+               
                     <!-- Blog Post 1 -->
+<<<<<<< HEAD
 					{% for event in event_list %}
+=======
+
+					{% for post in post_list %}
+
+>>>>>>> origin/master
                     <div class="item">
                       <div class="blog-card">
                         <div class="media-block">
                           <a href="/potato/post/{{post.id}}">
                             <img class="post-image img-responsive" src="../media/images/blog/blog_post_1.jpg" alt="" />
                             <div class="mask"></div>
+<<<<<<< HEAD
                             <div class="post-date"><span class="day">{{event.data_create.day}}</span><span class="month">{{event.data_create.month}}</span><span class="year">{{event.data_create.year}}</span></div>
+=======
+                            <div class="post-date"><span class="day">{{post.data_when.day}}</span><span class="month">{{post.data_when.month}}</span><span class="year">{{post.data_when.year}}</span></div>
+>>>>>>> origin/master
                           </a>
                         </div>
                         <div class="post-info">
                           <ul class="category">
                             <a href="/potato/post/{{post.id}}" ><h4 class="blog-item-title">{{event.title}}</h4></a>
                           </ul>
+<<<<<<< HEAD
                           <li style="max-width: 500px; overflow: hidden; text-overflow: ellipsis;white-space: nowrap" >{{event.text}}</li>
+=======
+                          <li style="max-width: 500px; overflow: hidden; text-overflow: ellipsis;white-space: nowrap" >{{post.description}}</li>
+>>>>>>> origin/master
                         </div>
                       </div>
                     </div>
-					{% endfor %}
-                    <!-- End of Blog Post 1 -->
+{% endfor %}
+</div>
+</div>
 
                    
            
-                  </div>
-                  <!-- Blog Posts Grid -->
-                </div>
               </div>
             </section>
+
+            <section class="pt-page" data-id="part">
+              <div class="section-inner custom-page-content">
+                <div class="page-header color-1">
+                  <h2>Участник</h2>
+                </div>
+                <div class="page-content">
+
+                  <!-- Blog Posts Grid -->
+                  <div class="blog-masonry two-columns">
+                    <!-- Blog Post 1 -->
+
+          {% for event in event_list %}
+
+                    <div class="item">
+                      <div class="blog-card">
+                        <div class="media-block">
+                          <a href="/potato/post/{{post.id}}">
+                            <img class="post-image img-responsive" src="../media/images/blog/blog_post_1.jpg" alt="" />
+                            <div class="mask"></div>
+                            <div class="post-date"><span class="day">{{event.data_when.day}}</span><span class="month">{{event.data_when.month}}</span><span class="year">{{event.data_when.year}}</span></div>
+                          </a>
+                        </div>
+                        <div class="post-info">
+                          <ul class="category">
+                            <a href="/potato/post/{{post.id}}" ><h4 class="blog-item-title">{{event.title}}</h4></a>
+                          </ul>
+                          <li style="max-width: 500px; overflow: hidden; text-overflow: ellipsis;white-space: nowrap" >{{event.description}}</li>
+                        </div>
+                      </div>
+                    </div>
+{% endfor %}
+</div>
+</div>
+
+                   
+           
+              </div>
+            </section>
+
             <!-- /Blog Subpage -->
 
             <!-- Contact Subpage -->
