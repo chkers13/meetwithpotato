@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django import forms
 
 # Create your models here.
 
@@ -47,6 +48,7 @@ class Event(models.Model):
     data_create = models.DateTimeField(auto_now_add='true', verbose_name="Дата создания")
     author = models.ForeignKey(User,blank=True,null=True,verbose_name="Организатор")
     participant = models.ManyToManyField(User,related_name='participantofevent')    
+    thumbnumber = models.IntegerField(blank=True,null=True, verbose_name="Число участников")
     data_when = models.DateField(blank=True,null=True, verbose_name="Дата проведения")
     place = models.CharField(max_length=255,verbose_name="Место встречи")
     age_limit = models.IntegerField(choices = age_limit_choice, verbose_name="Возрастное ограничение")
@@ -59,6 +61,8 @@ class Event(models.Model):
     @models.permalink
     def get_update_url(self):
         return ['event-update',(self.pk,)]
+
+        
 
 
 
