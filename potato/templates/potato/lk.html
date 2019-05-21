@@ -1,5 +1,82 @@
 {%extends 'base.html'%}
 {%block content%}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<script src="https://code.jquery.com/jquery-3.4.0.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
+
+  <link rel="stylesheet" href="/static/css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/animate.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/transition-animations.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/owl.carousel.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/magnific-popup.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/main.css" type="text/css">
+
+    
+    <script src="/static/js/modernizr.custom.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+<!--Вставила стили из главной страницы-->
+<style>
+.form-group{
+ margin-bottom: 15px;
+}
+label{
+ margin-bottom: 15px;
+}
+input,
+input::-webkit-input-placeholder {
+ font-size: 11px;
+ padding-top: 3px;
+}
+.form-control {
+ height: auto!important;
+padding: 8px 12px !important;
+}
+.input-group {
+ box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+}
+#button {
+ border: 1px solid #ccc;
+ margin-top: 28px;
+ padding: 6px 12px;
+ color: #666;
+ text-shadow: 0 1px #fff;
+ cursor: pointer;
+ border-radius: 3px 3px;
+ box-shadow: 0 1px #fff inset, 0 1px #ddd;
+ background: #f5f5f5;
+ background: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f5f5), color-stop(100%, #eeeeee));
+ background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+ background: -o-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+ background: -ms-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+ background: linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0);
+}
+.main-form{
+ margin-top: 30px;
+ margin-left: auto;
+ margin-right: auto;
+ max-width: 1000px;
+ padding: 10px 200px;
+ background:#F5F5F5;
+ color: #000000;
+ text-shadow: none;
+ box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+}
+span.input-group-addon i {
+ color: #ff9800;
+ font-size: 17px;
+}
+.login-button{
+ margin-top: 5px;
+}
+</style>
+<div class="row main-form">
+      <h2 class="text-warning">Настройки профиля</h2>
 {{author.username}}
 <form method="post">
           {% csrf_token %}
@@ -7,4 +84,5 @@
          {{form1.as_p}}
           <button class="btn btn-primary btn-lg" type="submit">Сохранить</button>
          </form>
+</div>
 {%endblock%}
