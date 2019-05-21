@@ -72,3 +72,6 @@ class Profile(models.Model):             #профиль пользовател�
     age = models.IntegerField(blank=True,null=True)          #возраст пользователя
     rating = models.FloatField(blank=True,null=True)         #рейтинг пользователя
     count = models.IntegerField(blank=True,null=True)        #количество оценивших пользователя
+
+class Comment(abstract_post):
+    event = models.ForeignKey(Event,blank=True,null=True,verbose_name="Пост")

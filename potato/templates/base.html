@@ -140,7 +140,7 @@ background: rgba(244, 244, 244, 0.79);
     </ul>
     <ul class="nav navbar-nav navbar-right">
       {%if request.user.is_authenticated%}
-          <li><a href="/exit"><span></span>Личный кабинет</a></li>
+          <li><a href="/potato/user"><span></span>Личный кабинет</a></li>
           <li><a href="/exit"><span></span>Выйти</a></li>
       {%else%}
           <li><a href="/login"><span ></span>Войти</a></li>

@@ -31,15 +31,22 @@ class UserUpdateView(UpdateView):
     fields = '__all__'
     template_name='potato/user-update.html'
 
-    def get_context_data(self,*args,**kwargs):
+    '''def get_context_data(self,*args,**kwargs):
         context=super(UserUpdateView,self).get_context_data(*args,**kwargs)
         user = self.request.GET['profile']
         print(user.info)
         context['User']= User.objects.get(username=user)
-        return context
+        return context'''
 
 
+def lk(request):
+    #author = User.objects.get(username=author)
+    author = request.user
+    print(author.username)
+    context = {'author':author}
+    response = render(request,'potato/lk.html',context=context)
 
+    return response
 
 def post_user(request,author='g'):
     author = User.objects.get(username=author)
@@ -55,17 +62,17 @@ def post_user(request,author='g'):
 
 
 def get_post(request,pk='1'):
-        post = Event.objects.get(pk=pk)     
+        event = Event.objects.get(pk=pk)     
         if request.POST:
             print(request.POST)
             if 'comment' in request.POST:
                 print("комментарий")
                 text = request.POST['comment']
                 author = User.objects.get(username = request.user)
-                comment = Comment.objects.create(author=author,text=text,post=post)
+                comment = Comment.objects.create(author=author,text=text,event=event)
                 comment.save()
-        list_comment = Comment.objects.filter(post=pk)
-        context = {'list_comment':list_comment,'post':post,'kol':post.participant.count()}
+        list_comment = Comment.objects.filter(event=pk)
+        context = {'list_comment':list_comment,'post':event,'kol':event.participant.count()}
         response = render(request,'potato/post-detail.html',context)
         return response
     

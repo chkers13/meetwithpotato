@@ -14,14 +14,11 @@
                     <div class="page-caption">
                         <h1 class="page-title">Ask the POTATOES!</h1>
                         <p class="lead">Добро пожаловать на форум!<br> Здесь ты можешь задать вопрос на злобу дня!</p>
-                        {%if request.user.is_authenticated%}
+                        
     					<p style="text-align: center;"><a href="/potato/postcreate"><button type="button" class="btn btn-primary btn-lg">Создать мероприятие</button></a></p>
-    					{%else%}
     					
-    					<p style="text-align: center;">
-    						<a href="/"><button type="button" class="btn btn-primary btn-lg">Создать мероприятие</button></a>
-    					</p>
-    					{%endif%}
+    					
+    					
                     </div>
                 </div>
             </div>

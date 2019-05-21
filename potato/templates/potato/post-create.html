@@ -78,10 +78,9 @@ span.input-group-addon i {
 }
 </style>
 
-
-    
- <div class="row main-form">
-    	<h2>Создание мероприятия</h2>
+{% if user.is_authenticated %}
+  <div class="row main-form">
+      <h2>Создание мероприятия</h2>
           <!--<link href="admin/css/widgets.css" type="text/css" media="all" rel="stylesheet"/>
           <script type="text/javascript" src="/admin/jsi18n/"></script>-->
 
@@ -99,5 +98,10 @@ span.input-group-addon i {
          </form>
         
     </div>
+{% else %}
+  <p>Добро пожаловать, незнакомец. Для создания мероприятия необходимо войти в систему. Пожалуйста пройдите на страницу входа или зарегестрируйтесь.</p>
+{% endif %}
+    
+ 
 
 {%endblock%}
