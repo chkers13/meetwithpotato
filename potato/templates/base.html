@@ -11,8 +11,11 @@
     <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-    <script src="https://code.jquery.com/jquery-3.4.0.js"></script>
+<!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
  <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
@@ -23,26 +26,12 @@
   <link rel="stylesheet" href="/static/css/owl.carousel.css" type="text/css">
   <link rel="stylesheet" href="/static/css/magnific-popup.css" type="text/css">
   <link rel="stylesheet" href="/static/css/main.css" type="text/css">
-  <link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="/static/css/style.css" type="text/css">
     
     <script src="/static/js/modernizr.custom.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <!--<style>
-      body {
-        padding-top: 0rem;
-      }
-    </style>
---><style type="text/css">
-  .page-header { background: url(https://easetemplate.com/free-website-templates/hike/images/pageheader.jpg)no-repeat; position: relative; background-size: cover; }
-.page-caption { padding-top: 170px; padding-bottom: 174px; }
-.page-title { font-size: 46px; line-height: 1; color: #fff; font-weight: 600; text-align: center; }
 
-.card-section { position: relative; bottom: 60px; }
-.card-block { padding: 80px; }
-.section-title { margin-bottom: 60px; }
-</style>
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -55,7 +44,11 @@
         }
       }
     </style>
-    
+    <style>
+      body .body {
+        padding-top: 0rem;
+      }
+    </style>
     <!--Стилевые ссылки из страницы регистрации (хотя меня бесит синяя кнопка хочу чтобы она была оранжевая-->
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />-->
@@ -101,7 +94,7 @@ background: rgba(244, 244, 244, 0.79);
 <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter39705265 = new Ya.Metrika({ id:39705265, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/39705265" style="position:absolute; left:-9999px;" alt="Yandex.Metrika" /></div></noscript> <!-- /Yandex.Metrika counter -->
 
     
-<nav class="navbar navbar-inverse navbar-expand-md navbar-dark bg-dark " style="margin: 0px;">
+<nav class="navbar navbar-inverse navbar-expand-md navbar-dark bg-dark fixed-top" style="padding: 0px;">
   <a class="navbar-brand" href="/"> MeetWithPotato</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -110,10 +103,10 @@ background: rgba(244, 244, 244, 0.79);
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" class="active" href="/">Главная страница<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/potato/{{user}}" style="color: #ff9800">{{user}}</a>
+        <a class="nav-link" href="/potato/{{user}}">{{user}}</a>
      
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Действия</a>
@@ -126,9 +119,8 @@ background: rgba(244, 244, 244, 0.79);
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-          <li><a href="/registration"><span></span>Sign Up</a></li>
-          <li><a href="/login"><span ></span>Login</a></li>
-          <li><a href="/exit"><span" class="oi oi-person" title="person" aria-hidden="true"></span>Exit</a></li>
+        <li><a href="/registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
     <!--
     <ul class="nav navbar-nav">
