@@ -1,6 +1,10 @@
 {% extends 'base.html'%}
-{%block content%}
 
+{%block content-header%}
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
 
 <!-- page-header -->
     <div class="page-header">
@@ -10,7 +14,14 @@
                     <div class="page-caption">
                         <h1 class="page-title">Ask the POTATOES!</h1>
                         <p class="lead">Добро пожаловать на форум!<br> Здесь ты можешь задать вопрос на злобу дня!</p>
-    					<a href="/potato/postcreate"><button type="button" class="btn btn-primary btn-lg">Create event</button></a>
+                        {%if request.user.is_authenticated%}
+    					<p style="text-align: center;"><a href="/potato/postcreate"><button type="button" class="btn btn-primary btn-lg">Создать мероприятие</button></a></p>
+    					{%else%}
+    					
+    					<p style="text-align: center;">
+    						<a href="/"><button type="button" class="btn btn-primary btn-lg">Создать мероприятие</button></a>
+    					</p>
+    					{%endif%}
                     </div>
                 </div>
             </div>
@@ -26,7 +37,8 @@
   </div>
 
 </header>-->
-
+{%endblock%}
+{%block content%}
 </main>
 	<div class="row mb-2">
 		{% for post in post_list %}

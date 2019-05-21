@@ -35,7 +35,7 @@
       }
     </style>
 --><style type="text/css">
-  .page-header { background: url(https://easetemplate.com/free-website-templates/hike/images/pageheader.jpg)no-repeat; position: relative; background-size: cover; }
+  .page-header { background: url(https://images.pexels.com/photos/1645634/pexels-photo-1645634.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)no-repeat; position: relative; background-size: cover; }
 .page-caption { padding-top: 170px; padding-bottom: 174px; }
 .page-title { font-size: 46px; line-height: 1; color: #fff; font-weight: 600; text-align: center; }
 
@@ -55,7 +55,17 @@
         }
       }
     </style>
-    
+    <style type="text/css">
+      body{
+        padding-top: 0px
+        !important;
+      }
+    </style>
+    <style type="text/css">
+      p.lead{
+        text-align: center;
+      }
+    </style>
     <!--Стилевые ссылки из страницы регистрации (хотя меня бесит синяя кнопка хочу чтобы она была оранжевая-->
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />-->
@@ -118,17 +128,25 @@ background: rgba(244, 244, 244, 0.79);
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Действия</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="/login">Log in</a>
-          <a class="dropdown-item" href="/exit">Exit</a>
-          <a class="dropdown-item" href="/registration">Registration</a>
-          <a class="dropdown-item" href="/potato/postcreate">Create</a>
+          {% if request.user.is_authenticated%}
+          <a class="dropdown-item" href="/potato/postcreate">Создать мероприятие</a>
+          <a class="dropdown-item" href="/exit">Выйти</a>
+          {%else%}
+          <a class="dropdown-item" href="/login">Войти</a>
+          <a class="dropdown-item" href="/registration">Зарегистрироваться</a>
+          {%endif%}
         </div>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-          <li><a href="/registration"><span></span>Sign Up</a></li>
-          <li><a href="/login"><span ></span>Login</a></li>
-          <li><a href="/exit"><span" class="oi oi-person" title="person" aria-hidden="true"></span>Exit</a></li>
+      {%if request.user.is_authenticated%}
+          <li><a href="/exit"><span></span>Личный кабинет</a></li>
+          <li><a href="/exit"><span></span>Выйти</a></li>
+      {%else%}
+          <li><a href="/login"><span ></span>Войти</a></li>
+          <li><a href="/registration"><span></span>Зарегистрироваться</a></li>
+      {%endif%}
+          
     </ul>
     <!--
     <ul class="nav navbar-nav">
@@ -153,7 +171,9 @@ background: rgba(244, 244, 244, 0.79);
  
 
     
+{% block content-header %}
 
+{%endblock%}
 <!-- /.container -->
 
     <div class="container">
