@@ -44,20 +44,29 @@ def lk(request):
     if request.user.is_authenticated():
         author = request.user      
         profile = Profile.objects.get(user=author.id)
+        
+        
+        if request.POST:
+            print('create')
+            print(request.POST)
+            '''form = UserForm(request.POST)
+            print(form)
+            if form.is_valid():   
+                user = form.save(commit='false')      
+                user.save()'''
+            author.first_name = request.POST['first_name']
+            author.last_name = request.POST['last_name']
+            author.email = request.POST['email']
+            author.save()
+
+            profile.age = request.POST['age']
+            profile.info = request.POST['info']
+            profile.save()
+            
         form = UserForm(instance=author)
         form1 = ProfileForm(instance=profile)
         context = {'author':author,'form':form,'form1':form1}
         response = render(request,'potato/lk.html',context=context)
-        if request.POST:
-            print('create')
-            print(request.POST)
-            form = UserForm(request.POST)
-            print(form)
-            if form.is_valid():   
-                user = form.save(commit='false')      
-                user.save()
-                response = render(request,'potato/lk.html',context=context)
-      
   
     return response
 
