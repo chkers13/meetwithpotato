@@ -1,5 +1,6 @@
 from django import forms
-from potato.models import Post, Event
+from django.contrib.auth.models import User
+from potato.models import Post, Event, Profile
 from django.contrib.admin.widgets import AdminDateWidget
 from django.forms.fields import DateField
 from django.forms import  Textarea
@@ -28,4 +29,12 @@ class EventForm(forms.ModelForm):
 
         }
 
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields ={'username','email'}
 
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields ={'info','age'}

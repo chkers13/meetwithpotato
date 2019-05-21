@@ -4,7 +4,7 @@ from potato.models import Post,Comment,Profile,Event
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout
 from django.views.generic import ListView,UpdateView,DetailView
-from potato.forms import PostForm,EventForm
+from potato.forms import PostForm,EventForm,UserForm,ProfileForm
 
 # Create your views here.
 def index(request):
@@ -41,11 +41,24 @@ class UserUpdateView(UpdateView):
 
 def lk(request):
     #author = User.objects.get(username=author)
-    author = request.user
-    print(author.username)
-    context = {'author':author}
-    response = render(request,'potato/lk.html',context=context)
-
+    if request.user.is_authenticated():
+        author = request.user      
+        profile = Profile.objects.get(user=author.id)
+        form = UserForm(instance=author)
+        form1 = ProfileForm(instance=profile)
+        context = {'author':author,'form':form,'form1':form1}
+        response = render(request,'potato/lk.html',context=context)
+        if request.POST:
+            print('create')
+            print(request.POST)
+            form = UserForm(request.POST)
+            print(form)
+            if form.is_valid():   
+                user = form.save(commit='false')      
+                user.save()
+                response = render(request,'potato/lk.html',context=context)
+      
+  
     return response
 
 def post_user(request,author='g'):
@@ -130,7 +143,7 @@ def post_create(request):
         print('create')
         form = EventForm(request.POST)
         if form.is_valid():
-           
+            print(form)
             event = form.save(commit='false')
             author = User.objects.get(username = request.user)
             event.author = author
