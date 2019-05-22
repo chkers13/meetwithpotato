@@ -24,8 +24,8 @@ class EventForm(forms.ModelForm):
 
         widgets = {
         'description': Textarea(attrs={'cols':60,'rows':5}),
-        'title': Textarea(attrs={'cols':60,'rows':1}),
-        'data_when': Textarea(attrs={'cols':60,'rows':1}),
+
+
 
         }
 
