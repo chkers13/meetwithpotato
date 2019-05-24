@@ -10,6 +10,9 @@ from potato.forms import PostForm,EventForm,UserForm,ProfileForm
 def index(request):
     return HttpResponse("Hello, world. You're at the potato index.")
 
+def about_view(request):
+    return render(request, 'potato/about_us.html')
+
 def home_view(request):
     post_list = Event.objects.all()
     user = request.user
