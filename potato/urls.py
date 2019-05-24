@@ -6,7 +6,7 @@ Created on Wed Apr  3 12:33:52 2019
 """
 
 from django.conf.urls import url
-from potato.views import home_view,PostDetailView,post_user,like_json,login_view,get_post,post_create,UserUpdateView,lk,about_view
+from potato.views import policy,home_view,PostDetailView,post_user,like_json,login_view,get_post,post_create,UserUpdateView,lk,about_view
 from django.conf.urls.static import static
 from django.conf import settings
 from . import views
@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^post/(?P<pk>\d+)$', get_post, name='post-detail'),
     url(r'^user$', lk, name='lk'),
     url(r'^about$', about_view),
+    url(r'^policy$', policy),
     url(r'^like_json$',views.like_json),
    	url(r'^postcreate$', post_create, name='post-create'),
     #url(r'^post/(?P<pk>\d+)$', PostDetailView.get_comment(), name='post_detail'),

@@ -13,6 +13,9 @@ def index(request):
 def about_view(request):
     return render(request, 'potato/about_us.html')
 
+def policy(request):
+    return render(request, 'potato/policy.html')
+
 def home_view(request):
     post_list = Event.objects.all()
     user = request.user
