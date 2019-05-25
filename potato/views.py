@@ -13,6 +13,9 @@ def index(request):
 def about_view(request):
     return render(request, 'potato/about_us.html')
 
+def help_view(request):
+    return render(request, 'potato/help.html')
+
 def policy(request):
     return render(request, 'potato/policy.html')
 
